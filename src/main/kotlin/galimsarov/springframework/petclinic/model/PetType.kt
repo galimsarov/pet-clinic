@@ -1,5 +1,5 @@
 package galimsarov.springframework.petclinic.model
 
-class PetType {
+class PetType: BaseEntity() {
     private lateinit var name: String
 }
