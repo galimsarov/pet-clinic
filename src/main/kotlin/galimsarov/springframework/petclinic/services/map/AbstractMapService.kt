@@ -2,7 +2,7 @@ package galimsarov.springframework.petclinic.services.map
 
 abstract class AbstractMapService<T, ID> {
     var map = HashMap<ID, T>()
-    fun findAll() = HashSet(map.values)
+    fun findAll() = map.values.toSet()
     open fun findById(id: ID) = map[id]!!
     fun save(id: ID, objectToSave: T): T {
         map[id] = objectToSave
