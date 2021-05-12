@@ -5,6 +5,4 @@ import galimsarov.springframework.petclinic.services.VetService
 import org.springframework.stereotype.Service
 
 @Service
-class VetServiceMap: AbstractMapService<Vet, Long>(), VetService {
-    override fun save(objectToSave: Vet) = super.save(objectToSave.id, objectToSave)
-}
+class VetServiceMap: AbstractMapService<Vet>(), VetService

@@ -5,10 +5,8 @@ import galimsarov.springframework.petclinic.services.OwnerService
 import org.springframework.stereotype.Service
 
 @Service
-class OwnerServiceMap: AbstractMapService<Owner, Long>(), OwnerService {
+class OwnerServiceMap: AbstractMapService<Owner>(), OwnerService {
     override fun findByLastName(lastName: String): Owner {
         TODO("Not yet implemented")
     }
-
-    override fun save(objectToSave: Owner) = super.save(objectToSave.id, objectToSave)
 }
