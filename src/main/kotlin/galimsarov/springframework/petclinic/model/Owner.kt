@@ -1,3 +1,5 @@
 package galimsarov.springframework.petclinic.model
 
-class Owner: Person()
+class Owner: Person() {
+    var pets = mutableSetOf<Pet>()
+}
