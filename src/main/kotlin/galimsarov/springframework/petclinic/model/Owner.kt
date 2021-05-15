@@ -1,5 +1,5 @@
 package galimsarov.springframework.petclinic.model
 
 class Owner: Person() {
-    var pets = mutableSetOf<Pet>()
+    val pets = mutableSetOf<Pet>()
 }
