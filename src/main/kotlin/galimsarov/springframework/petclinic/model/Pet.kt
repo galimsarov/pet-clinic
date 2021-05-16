@@ -3,7 +3,8 @@ package galimsarov.springframework.petclinic.model
 import java.time.LocalDate
 
 class Pet: BaseEntity() {
-    private lateinit var petType: PetType
-    private lateinit var owner: Owner
-    private lateinit var birthDate: LocalDate
+    var petType = PetType()
+    var owner = Owner()
+    var birthDate = LocalDate.parse("2021-01-01")
+    var name = ""
 }
