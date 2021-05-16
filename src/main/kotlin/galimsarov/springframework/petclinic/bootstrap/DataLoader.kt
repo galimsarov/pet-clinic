@@ -1,11 +1,9 @@
 package galimsarov.springframework.petclinic.bootstrap
 
-import galimsarov.springframework.petclinic.model.Owner
-import galimsarov.springframework.petclinic.model.Pet
-import galimsarov.springframework.petclinic.model.PetType
-import galimsarov.springframework.petclinic.model.Vet
+import galimsarov.springframework.petclinic.model.*
 import galimsarov.springframework.petclinic.services.OwnerService
 import galimsarov.springframework.petclinic.services.PetTypeService
+import galimsarov.springframework.petclinic.services.SpecialityService
 import galimsarov.springframework.petclinic.services.VetService
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
@@ -15,9 +13,16 @@ import java.time.LocalDate
 class DataLoader(
     private val ownerService: OwnerService,
     private val vetService: VetService,
-    private val petTypeService: PetTypeService
+    private val petTypeService: PetTypeService,
+    private val specialityService: SpecialityService
     ): CommandLineRunner {
     override fun run(vararg args: String?) {
+        val count = petTypeService.findAll().size
+        if (count == 0)
+            loadData()
+    }
+
+    private fun loadData() {
         val dog = PetType()
         dog.name = "Dog"
         val savedDogPetType = petTypeService.save(dog)
@@ -25,6 +30,18 @@ class DataLoader(
         val cat = PetType()
         cat.name = "Cat"
         val savedCatPetType = petTypeService.save(cat)
+
+        val radiology = Speciality()
+        radiology.description = "Radiology"
+        val savedRadiology = specialityService.save(radiology)
+
+        val surgery = Speciality()
+        surgery.description = "Surgery"
+        val savedSurgery = specialityService.save(surgery)
+
+        val dentistry = Speciality()
+        dentistry.description = "Dentistry"
+        val savedDentistry = specialityService.save(dentistry)
 
         val owner1 = Owner()
         owner1.firstName = "Михаил"
@@ -63,11 +80,13 @@ class DataLoader(
         val vet1 = Vet()
         vet1.firstName = "Самуил"
         vet1.lastName = "Топоров"
+        vet1.specialities.add(savedRadiology)
         vetService.save(vet1)
 
         val vet2 = Vet()
         vet2.firstName = "Яков"
         vet2.lastName = "Грузов"
+        vet2.specialities.add(savedSurgery)
         vetService.save(vet2)
 
         println("Ветеринары загружены...")
