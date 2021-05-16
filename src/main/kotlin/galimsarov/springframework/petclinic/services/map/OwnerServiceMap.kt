@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service
 class OwnerServiceMap(
     private val petTypeService: PetTypeService,
     private val petService: PetService
-    ): AbstractMapService<Owner>(), OwnerService {
+    ): AbstractServiceMap<Owner>(), OwnerService {
     override fun save(objectToSave: Owner): Owner {
         if (objectToSave.pets.isNotEmpty()) {
             objectToSave.pets.forEach { pet ->
