@@ -7,4 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 class IndexController {
     @RequestMapping("", "/", "index", "index.html")
     fun index() = "index"
+
+    @RequestMapping("/oups")
+    fun oupsHandler() = "notimplemented"
 }

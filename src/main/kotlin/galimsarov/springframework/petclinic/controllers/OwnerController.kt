@@ -13,4 +13,7 @@ class OwnerController(private val ownerService: OwnerService) {
         model.addAttribute("owners", ownerService.findAll())
         return "owners/index"
     }
+
+    @RequestMapping("/find")
+    fun findOwners() = "notimplemented"
 }
