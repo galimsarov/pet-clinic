@@ -19,4 +19,7 @@ class Pet: BaseEntity() {
 
     @Column(name = "birth_date")
     var birthDate: LocalDate = LocalDate.parse("2021-01-01")
+
+    @OneToMany(cascade = [CascadeType.ALL], mappedBy = "pet")
+    var visits = mutableSetOf<Visit>()
 }
