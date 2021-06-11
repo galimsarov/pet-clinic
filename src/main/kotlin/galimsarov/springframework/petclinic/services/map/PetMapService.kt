@@ -5,4 +5,4 @@ import galimsarov.springframework.petclinic.services.PetService
 import org.springframework.stereotype.Service
 
 @Service
-class PetServiceMap: AbstractServiceMap<Pet>(), PetService
+class PetMapService : AbstractMapService<Pet>(), PetService

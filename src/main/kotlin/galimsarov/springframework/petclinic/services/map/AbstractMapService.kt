@@ -3,7 +3,7 @@ package galimsarov.springframework.petclinic.services.map
 import galimsarov.springframework.petclinic.model.BaseEntity
 import java.util.*
 
-abstract class AbstractServiceMap<T: BaseEntity> {
+abstract class AbstractMapService<T : BaseEntity> {
     var map = HashMap<Long, T>()
 
     fun findAll() = map.values.toSet()

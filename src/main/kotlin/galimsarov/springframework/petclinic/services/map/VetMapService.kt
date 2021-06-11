@@ -6,7 +6,7 @@ import galimsarov.springframework.petclinic.services.VetService
 import org.springframework.stereotype.Service
 
 @Service
-class VetServiceMap(private val specialityService: SpecialityService): AbstractServiceMap<Vet>(), VetService {
+class VetMapService(private val specialityService: SpecialityService) : AbstractMapService<Vet>(), VetService {
     override fun save(objectToSave: Vet): Vet {
         if (objectToSave.specialities.size > 0) {
             objectToSave.specialities.forEach { speciality ->

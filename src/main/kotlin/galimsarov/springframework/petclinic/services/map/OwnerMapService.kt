@@ -7,10 +7,10 @@ import galimsarov.springframework.petclinic.services.PetTypeService
 import org.springframework.stereotype.Service
 
 @Service
-class OwnerServiceMap(
+class OwnerMapService(
     private val petTypeService: PetTypeService,
     private val petService: PetService
-    ): AbstractServiceMap<Owner>(), OwnerService {
+) : AbstractMapService<Owner>(), OwnerService {
     override fun save(objectToSave: Owner): Owner {
         if (objectToSave.pets.isNotEmpty()) {
             objectToSave.pets.forEach { pet ->
