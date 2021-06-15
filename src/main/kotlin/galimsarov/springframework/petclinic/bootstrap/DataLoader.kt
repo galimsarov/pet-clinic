@@ -1,10 +1,7 @@
 package galimsarov.springframework.petclinic.bootstrap
 
 import galimsarov.springframework.petclinic.model.*
-import galimsarov.springframework.petclinic.services.OwnerService
-import galimsarov.springframework.petclinic.services.PetTypeService
-import galimsarov.springframework.petclinic.services.SpecialityService
-import galimsarov.springframework.petclinic.services.VetService
+import galimsarov.springframework.petclinic.services.*
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
 import java.time.LocalDate
@@ -14,8 +11,9 @@ class DataLoader(
     private val ownerService: OwnerService,
     private val vetService: VetService,
     private val petTypeService: PetTypeService,
-    private val specialityService: SpecialityService
-    ): CommandLineRunner {
+    private val specialityService: SpecialityService,
+    private val visitService: VisitService
+) : CommandLineRunner {
     override fun run(vararg args: String?) {
         val count = petTypeService.findAll().size
         if (count == 0)
@@ -74,6 +72,13 @@ class DataLoader(
         owner2.pets.add(fionasCat)
 
         ownerService.save(owner2)
+
+        val catVisit = Visit()
+        catVisit.pet = fionasCat
+        catVisit.date = LocalDate.now()
+        catVisit.description = "Котёнок чихает"
+
+        visitService.save(catVisit)
 
         println("Владельцы живтоных загружены...")
 
