@@ -4,9 +4,11 @@ import galimsarov.springframework.petclinic.model.Owner
 import galimsarov.springframework.petclinic.services.OwnerService
 import galimsarov.springframework.petclinic.services.PetService
 import galimsarov.springframework.petclinic.services.PetTypeService
+import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Service
 
 @Service
+@Profile("default", "map")
 class OwnerMapService(
     private val petTypeService: PetTypeService,
     private val petService: PetService
