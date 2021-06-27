@@ -1,9 +1,11 @@
 package galimsarov.springframework.petclinic.model
 
+import lombok.Builder
 import java.time.LocalDate
 import javax.persistence.*
 
 @Entity
+@Builder
 @Table(name = "pets")
 class Pet: BaseEntity() {
     @Column(name = "name")

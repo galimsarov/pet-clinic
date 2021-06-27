@@ -1,8 +1,10 @@
 package galimsarov.springframework.petclinic.model
 
+import lombok.Builder
 import javax.persistence.*
 
 @Entity
+@Builder
 @Table(name = "vets")
 class Vet : Person() {
     @ManyToMany(fetch = FetchType.EAGER)
